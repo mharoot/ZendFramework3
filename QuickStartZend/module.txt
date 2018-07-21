@@ -22,7 +22,7 @@ class Module implements ConfigProviderInterface
 					Model\%sTableGateway::class => function ($container) {
 						$dbAdapter = $container->get(AdapterInterface::class);
 						$resultSetPrototype = new ResultSet();
-						$resultSetPrototype->setArrayObjectProtottype(new Model\%s());
+						$resultSetPrototype->setArrayObjectPrototype(new Model\%s());
 						$tableName = '%s';
 						return new TableGateway($tableName, $dbAdapter, null, $resultSetPrototype);
 					},
