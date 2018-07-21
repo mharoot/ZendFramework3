@@ -1,0 +1,37 @@
+<?php
+	// module/Product/view/product/product/index.phtml:
+	$title = 'My products';
+	$this->headTitle($title);
+?>
+
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+	<a href="<?= $this->url('product', ['action' => 'add']) ?>">Add new product</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>ProductName</th>
+		<th>SupplierID</th>
+		<th>CategoryID</th>
+		<th>Unit</th>
+		<th>Price</th>
+		<th>Quantity</th>
+		<th>&nbsp;</th>
+	</tr>
+<?php foreach ($products as $product) : ?>
+	<tr>
+		<td><?= $this->escapeHtml($product->ProductName) ?></td>
+		<td><?= $this->escapeHtml($product->SupplierID) ?></td>
+		<td><?= $this->escapeHtml($product->CategoryID) ?></td>
+		<td><?= $this->escapeHtml($product->Unit) ?></td>
+		<td><?= $this->escapeHtml($product->Price) ?></td>
+		<td><?= $this->escapeHtml($product->Quantity) ?></td>
+		<td>
+			<a href="<?= $this->url('product', ['action' => 'edit', 'ProductID' => $product->ProductID]) ?>">Edit</a>
+			<a href="<?= $this->url('product', ['action' => 'delete', 'ProductID' => $product->ProductID]) ?>">Delete</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</table>

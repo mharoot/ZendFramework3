@@ -1,0 +1,11 @@
+<?php
+namespace %s\Model; 
+
+class %s { 
+    
+    public $id; 
+
+    public function exchangeArray(array $data) { 
+        $this->id   = !empty($data['id']) ? $data['id'] : null; 
+    }
+}

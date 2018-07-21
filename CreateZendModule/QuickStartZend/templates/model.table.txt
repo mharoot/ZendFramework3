@@ -1,0 +1,63 @@
+<?php
+
+namespace %s\Model;
+
+use RuntimeException;
+use Zend\Db\TableGateway\TableGatewayInterface;
+
+class %sTable
+{
+    private $tableGateway;
+
+    public function __construct(TableGatewayInterface $tableGateway)
+    {
+        $this->tableGateway = $tableGateway;
+    }
+
+    public function fetchAll()
+    {
+        return $this->tableGateway->select();
+    }
+
+    public function get%s($id)
+    {
+        $id = (int) $id;
+        $rowset = $this->tableGateway->select(['id' => $id]);
+        $row = $rowset->current();
+        if (! $row) {
+            throw new RuntimeException(sprintf(
+                "Could not find row with identifier $id"
+            ));
+        }
+
+        return $row;
+    }
+
+    public function save%s(%s $%s)
+    {
+        $data = [
+            'col_key1' => $%s->col_key1,
+            'col_key2'  => $%s->col_key2,
+        ];
+
+        $id = (int) $%s->id;
+
+        if ($id === 0) {
+            $this->tableGateway->insert($data);
+            return;
+        }
+
+        if (! $this->get%s($id)) {
+            throw new RuntimeException(sprintf(
+                "Cannot update %s with identifier $id; does not exist"
+            ));
+        }
+
+        $this->tableGateway->update($data, ['id' => $id]);
+    }
+
+    public function delete%s($id)
+    {
+        $this->tableGateway->delete(['id' => (int) $id]);
+    }
+}
