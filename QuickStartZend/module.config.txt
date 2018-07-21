@@ -1,0 +1,36 @@
+<?php
+namespace %s;
+
+use Zend\Router\Http\Segment;
+// use Zend\ServiceManager\Factory\InvokableFactory;
+
+return [ 
+   /*'controllers' => [
+    'factories' => [
+            Controller\%sController::class => InvokableFactory::class, 
+        ],
+    ],*/
+    'router' => [ 
+            'routes' => [
+                '%s' => [ 
+                    'type' => Segment::class, 
+                    'options' => [ 
+                        'route' => '/%s[/:action[/:id]]', 
+                        'constraints' => [ 
+                            'action' => '[a-zA-Z][a-zA-Z0-9_-]*', 
+                            'id' => '[0-9]+', 
+                        ], 
+                        'defaults' => [ 
+                            'controller' => Controller\%sController::class,
+                            'action' => 'index', 
+                        ], 
+                    ], 
+                ], 
+            ], 
+        ],
+    'view_manager' => [
+        'template_path_stack' => [ 
+            '%s' => __DIR__ . '/../view',
+ 		],
+    ],
+];
