@@ -1,10 +1,10 @@
 <?php 
-namespace Product\Controller; 
+namespace Category\Controller; 
 
 use Zend\Mvc\Controller\AbstractActionController; 
 use Zend\View\Model\ViewModel; 
 
-class ProductController extends AbstractActionController { 
+class CategoryController extends AbstractActionController { 
     public function indexAction() { 
 
     } 

@@ -8,3 +8,8 @@ Is a shell tool:
 ```
 QuickStartZend/./createZendModule {Module Name}
 ```
+
+### Attach a PDO Database to you localhost
+```
+QuickStartZend/./completeModel.sh {Module Name} {db name} {db user} {db pass} {table name}
+```

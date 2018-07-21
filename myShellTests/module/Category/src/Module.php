@@ -1,5 +1,5 @@
 <?php
-namespace Product;
+namespace Category;
 
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSet;
@@ -15,15 +15,15 @@ class Module implements ConfigProviderInterface
 
     public function getServiceConfig() {
 		return [ 'factories' => [
-					Model\ProductTable::class => function($container) {
-						$tableGateway = $container->get(Model\ProductTableGateway::class);
-						return new Model\ProductTable($tableGateway);
+					Model\CategoryTable::class => function($container) {
+						$tableGateway = $container->get(Model\CategoryTableGateway::class);
+						return new Model\CategoryTable($tableGateway);
 					},
-					Model\ProductTableGateway::class => function ($container) {
+					Model\CategoryTableGateway::class => function ($container) {
 						$dbAdapter = $container->get(AdapterInterface::class);
 						$resultSetPrototype = new ResultSet();
-						$resultSetPrototype->setArrayObjectProtottype(new Model\Product());
-						$tableName = 'product';
+						$resultSetPrototype->setArrayObjectPrototype(new Model\Category());
+						$tableName = 'category';
 						return new TableGateway($tableName, $dbAdapter, null, $resultSetPrototype);
 					},
 				]
@@ -34,9 +34,9 @@ class Module implements ConfigProviderInterface
     {
         return [
             'factories' => [
-                Controller\ProductController::class => function($container) {
-                    return new Controller\ProductController(
-                        $container->get(Model\ProductTable::class)
+                Controller\CategoryController::class => function($container) {
+                    return new Controller\CategoryController(
+                        $container->get(Model\CategoryTable::class)
                     );
                 },
             ],

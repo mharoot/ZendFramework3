@@ -1,14 +1,14 @@
 <?php
-namespace Product\Form;
+namespace Category\Form;
 
 use Zend\Form\Form;
 
-class ProductForm extends Form
+class CategoryForm extends Form
 {
     public function __construct($name = null)
     {
         // We will ignore the name provided to the constructor
-        parent::__construct('product');
+        parent::__construct('category');
 
         $this->add([
             'name' => 'id',

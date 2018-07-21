@@ -88,12 +88,9 @@ function createZendModule() {
 
 }
 
+
 # Starting Point of Application
 createZendModule $1
-
-
-
-
 
 function nextStep() {
     echo "Open \"composer.json\" in your project root, and find the following section:"

@@ -1,11 +1,11 @@
 <?php
 
-namespace Product\Model;
+namespace Category\Model;
 
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
 
-class ProductTable
+class CategoryTable
 {
     private $tableGateway;
 
@@ -19,7 +19,7 @@ class ProductTable
         return $this->tableGateway->select();
     }
 
-    public function getProduct($id)
+    public function getCategory($id)
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
@@ -33,30 +33,30 @@ class ProductTable
         return $row;
     }
 
-    public function saveProduct(Product $product)
+    public function saveCategory(Category $category)
     {
         $data = [
-            'col_key1' => $product->col_key1,
-            'col_key2'  => $product->col_key2,
+            'col_key1' => $category->col_key1,
+            'col_key2'  => $category->col_key2,
         ];
 
-        $id = (int) $product->id;
+        $id = (int) $category->id;
 
         if ($id === 0) {
             $this->tableGateway->insert($data);
             return;
         }
 
-        if (! $this->getProduct($id)) {
+        if (! $this->getCategory($id)) {
             throw new RuntimeException(sprintf(
-                "Cannot update product with identifier $id; does not exist"
+                "Cannot update category with identifier $id; does not exist"
             ));
         }
 
         $this->tableGateway->update($data, ['id' => $id]);
     }
 
-    public function deleteProduct($id)
+    public function deleteCategory($id)
     {
         $this->tableGateway->delete(['id' => (int) $id]);
     }
