@@ -77,15 +77,10 @@ function createZendModule() {
         cd ../../../ # back to root project directory
     }
 
-    
-
-
     directories $1
     moduleConfig $1
     src $1
     view $1
-
-
 }
 
 
