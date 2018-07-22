@@ -1,0 +1,1 @@
+php ZendFormCreator.php Product emvc localhost root password  >> ProductForm.php
